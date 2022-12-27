@@ -1,0 +1,6 @@
+go 1.19
+
+use (
+	./Dining_Philosophers_Problem
+	./Producer_Consumer_Problem
+)
