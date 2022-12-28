@@ -23,6 +23,7 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 
@@ -42,7 +43,7 @@ func main() {
 	color.Yellow("The Sleeping Barber Problem")
 	color.Yellow("---------------------------")
 
-	// create channels if we need any
+	// create channels
 	clientChan := make(chan string, seatingCapacity)
 	doneChan := make(chan bool)
 
@@ -59,10 +60,41 @@ func main() {
 	color.Green("The shop is open for the day!")
 
 	// add barbers
+	shop.addBarber("Frank")
+	shop.addBarber("Gerard")
+	shop.addBarber("Milton")
+	shop.addBarber("Susan")
+	shop.addBarber("Kelly")
+	shop.addBarber("Pat")
 
 	// start the barbershop as a goroutine
+	shopClosing := make(chan bool)
+	closed := make(chan bool)
+
+	go func() {
+		<-time.After(timeOpen)
+		shopClosing <- true
+		shop.closeShopForDay()
+		closed <- true
+	}()
 
 	// add clients
+	i := 1
+
+	go func() {
+		for {
+			// get a random number with average arrival rate
+			randomMilliseconds := rand.Int() % (2 * arrivalRate)
+			select {
+			case <-shopClosing:
+				return
+			case <-time.After(time.Millisecond * time.Duration(randomMilliseconds)):
+				shop.addClient(fmt.Sprintf("Client #%d", i))
+				i++
+			}
+		}
+	}()
 
 	// block until the barbershop is closed
+	<-closed
 }
