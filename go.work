@@ -4,4 +4,5 @@ use (
 	./Dining_Philosophers
 	./Producer_Consumer
 	./Sleeping_Barber
+	./Go_Micro/front-end
 )
