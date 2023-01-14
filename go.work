@@ -5,4 +5,5 @@ use (
 	./Producer_Consumer
 	./Sleeping_Barber
 	./Go_Micro/front-end
+	./Go_Micro/broker-service
 )
