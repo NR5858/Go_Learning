@@ -6,4 +6,5 @@ use (
 	./Sleeping_Barber
 	./Go_Micro/front-end
 	./Go_Micro/broker-service
+	./Go_Micro/authentication-service
 )
