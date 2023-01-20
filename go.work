@@ -7,4 +7,5 @@ use (
 	./Go_Micro/front-end
 	./Go_Micro/broker-service
 	./Go_Micro/authentication-service
+	./Go_Micro/logger-service
 )
