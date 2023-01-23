@@ -8,4 +8,5 @@ use (
 	./Go_Micro/broker-service
 	./Go_Micro/authentication-service
 	./Go_Micro/logger-service
+	./Go_Micro/mail-service
 )
