@@ -9,4 +9,5 @@ use (
 	./Go_Micro/authentication-service
 	./Go_Micro/logger-service
 	./Go_Micro/mail-service
+	./Go_Micro/listener-service
 )
